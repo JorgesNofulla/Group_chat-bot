@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Interface</title>
+    <style>
+        /* General Styling */
+
+
+        div#input-area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 90%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/background.png'); /* Path to your PNG */
+            background-size: cover; /* Ensures the image covers the entire background */
+            background-repeat: no-repeat; /* Prevents tiling */
+            background-position: center; /* Centers the image */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #chat-window {
+            display: flex; /* Change to flexbox */
+            flex-direction: column; /* Make the children (messages) stack vertically */
+            align-items: flex-start; /* Align messages to the left by default */
+            border: 1px solid #0a0000;
+            border-radius: 10px;
+            width: 95%;
+            max-width: 900px;
+            height: 600px; 
+            background-color: #fffdfd;
+            overflow-y: auto; /* Keep scrolling for overflowing messages */
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+
+        .message-container {
+            display: flex;
+            width: 100%; /* Ensure the messages take up the full width */
+            margin: 5px 0; /* Add spacing between messages */
+            justify-content: flex-start; /* Default alignment for chatbot messages */
+        }
+
+        .message-container.user {
+            justify-content: flex-end; /* Align user messages to the right */
+        }
+
+
+        /* User message styles */
+        .user-message {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 15px;
+            max-width: 70%;
+            text-align: left;
+        }
+
+        .chatbot-message {
+            background-color: #e5e5ea;
+            color: black;
+            padding: 10px 15px;
+            border-radius: 15px;
+            max-width: 70%;
+            text-align: left;
+            display: flex;
+            flex-direction: column; /* Stack text and code blocks vertically */
+            align-items: flex-start; /* Align content to the left */
+            gap: 10px; /* Add space between text and code blocks */
+            word-wrap: break-word; /* Ensure long words break into new lines */
+        }
+
+
+        .chatbot-message img {
+            width: 40px;
+            height: 35px;
+            border-radius: 50%;
+            align-self: flex-start; /* Align icon to the top of the bubble */
+            margin-right: 10px; /* Add spacing between icon and content */
+        }
+
+
+        /* Input and button styles */
+        #user-input {
+            flex: 1; /* Make input take up the remaining space */
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px; /* Rounded corners for left side */
+            margin: 0; /* Remove margin */
+        }
+
+        #send-button {
+            padding: 10px 15px;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+
+        #send-button:hover {
+            background-color: #0056b3;
+        }
+
+
+        pre {
+            background-color: #f4f4f4; /* Light gray background for code */
+            padding: 10px; /* Add padding inside the code block */
+            border-radius: 5px; /* Rounded corners */
+            overflow-x: auto; /* Add horizontal scrolling for long lines */
+            margin: 0; /* Remove extra margin */
+            font-family: Consolas, Monaco, monospace; /* Code font */
+            font-size: 14px; /* Adjust font size */
+            width: 100%; /* Make the code block fit inside the chat bubble */
+            box-sizing: border-box; /* Include padding in width calculation */
+        }
+
+        code {
+            color: #d6336c; /* Optional: Make the code text color distinct */
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="chat-window"></div>
+    <div id="input-area">
+        <input type="text" id="user-input" placeholder="Type your message..." />
+        <button id="send-button">Send</button>
+    </div>
+    
+
+    <script src="/static/chat_interface.js"></script>
+</body>
+</html>
